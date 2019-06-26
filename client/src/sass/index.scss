@@ -1,0 +1,131 @@
+@import "_variable.scss";
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.App {
+  height: 100%;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+}
+
+.landing {
+  height: 100%;
+  background-color: $bg-color;
+  display: flex;
+  padding: 10% 10%;
+}
+
+.img-div {
+  flex: 1.2;
+  position: relative;
+  background: url('../img/black-background-bulb-close-up-716398.jpg') no-repeat;
+  background-size: cover;
+  /* height: 60%;
+  width: 40%; */
+  background-position: 50% 50%;
+}
+
+.text-div {
+  flex: 1;
+  margin-top: 5%;
+  text-align: left;
+  h2 {
+    color: $white;
+    font-weight: 700;
+    margin-bottom: 2vw;
+  }
+  p {
+    color: $landing-para;
+  }
+
+  .btn-div {
+    display: flex;
+    margin-top: 14%;
+  }
+  .login, .signup {
+    padding: 1vw 5vw;
+    border-radius: 5%;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: 1s background-color;
+  }
+  .login:focus, .signup:focus {
+    outline: 0;
+  }
+  .login {
+    margin-right: 2vw;
+    border: none;
+    background-color: $bulb;
+    color: $black;
+    &:hover {
+      background-color: $white;
+    }
+  }
+
+  .signup {
+    background-color: $bg-color;
+    border: 1px solid $bulb;
+    color: $bulb;
+    &:hover {
+      background-color: $bulb;
+      color: $black;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .img-div {
+    display: none;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .text-div {
+    .login, .signup {
+      padding: 2vw 6vw;
+    }
+  }
+}
+
+/* .landing {
+  position: relative;
+  background: url('./img/action-adult-bike-417005.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 85.7vh;
+  margin-top: -24px;
+  margin-bottom: -50px;
+}
+
+.landing-inner {
+  padding-top: 80px;
+}
+
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-form {
+  opacity: 0.9;
+}
+
+.latest-profiles-img {
+  width: 40px;
+  height: 40px;
+}
+
+.form-control::placeholder {
+  color: #bbb !important;
+} */

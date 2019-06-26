@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Landing extends Component {
   render() {
@@ -13,8 +14,8 @@ class Landing extends Component {
           Porro maiores.
           </p>
           <div className="btn-div">
-            <button className="login">Login</button>
-            <button className="signup">Signup</button>
+            <Link className="login" to="/login">Login</Link>
+            <Link className="signup" to="/signup">Signup</Link>
           </div>
         </div>
       </div >

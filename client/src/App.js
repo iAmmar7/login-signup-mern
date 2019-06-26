@@ -1,13 +1,21 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Landing from './components/Landing';
+import Signup from './components/Signup';
+import Login from './components/Login';
+
+import './sass/index.css';
 
 function App() {
   return (
-    <div className="App">
-      <Landing />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+      </div>
+    </BrowserRouter>
   );
 }
 
