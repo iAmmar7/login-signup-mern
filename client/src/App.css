@@ -1,4 +1,10 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
 .App {
+  height: 100%;
   text-align: center;
 }
 
@@ -7,8 +13,85 @@ img {
 }
 
 .landing {
+  height: 100%;
+  background-color: rgba(32, 32, 32, 0.8);
+  background-color: #241E20;
+  display: flex;
+  padding: 10% 10%;
+}
+
+.img-div {
+  flex: 1.2;
   position: relative;
-  /* background: url('./img/action-adult-bike-417005.jpg') no-repeat; */
+  background: url('./img/black-background-bulb-close-up-716398.jpg') no-repeat;
+  background-size: cover;
+  /* height: 60%;
+  width: 40%; */
+  background-position: 50% 50%;
+}
+
+.text-div {
+  flex: 1;
+  margin-top: 5%;
+  text-align: left;
+}
+
+.text-div > h2 {
+  color: #FFFFFF;
+  font-weight: 700;
+  margin-bottom: 2vw;
+}
+
+.text-div > p {
+  color: #999799;
+}
+
+.btn-div {
+  display: flex;
+  margin-top: 14%;
+}
+
+.login, .signup {
+  padding: 3% 14%;
+  border-radius: 5%;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.login {
+  margin-right: 2vw;
+  border: none;
+  background-color: rgb(87%, 59%, 11%, 0.9);
+}
+.login:hover {
+  background-color: #FFFFFF;
+}
+
+.signup {
+  background-color: #241E20;
+  border-color: rgb(87%, 59%, 11%, 0.9);
+  color: rgb(87%, 59%, 11%, 0.9);
+}
+.signup:hover {
+  background-color: rgb(87%, 59%, 11%, 0.9);
+  color: #000000;
+}
+
+@media only screen and (max-width: 700px) {
+  .img-div {
+    display: none;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .login, .signup {
+    padding: 3vw 8vw;
+  }
+}
+
+/* .landing {
+  position: relative;
+  background: url('./img/action-adult-bike-417005.jpg') no-repeat;
   background-size: cover;
   background-position: center;
   height: 85.7vh;
@@ -40,4 +123,4 @@ img {
 
 .form-control::placeholder {
   color: #bbb !important;
-}
+} */
