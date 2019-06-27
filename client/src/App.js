@@ -6,6 +6,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 
 import './sass/index.css';
+// import "./App.css";
 
 function App() {
   return (

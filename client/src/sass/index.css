@@ -6,6 +6,7 @@ body, html {
 .App {
   height: 100%;
   text-align: center;
+  background-color: #241E20;
 }
 
 img {
@@ -65,8 +66,8 @@ img {
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 2px;
-  -webkit-transition: 1s background-color;
-  transition: 1s background-color;
+  -webkit-transition: 1s all;
+  transition: 1s all;
 }
 
 .text-div .login:focus, .text-div .signup:focus {
@@ -105,6 +106,79 @@ img {
   .text-div .login, .text-div .signup {
     padding: 2vw 6vw;
   }
+}
+
+.register {
+  height: 100%;
+}
+
+.register h1 {
+  color: #FFFFFF;
+  font-weight: 400;
+}
+
+.register p {
+  color: #FFFFFF;
+}
+
+.register input:focus {
+  outline: none !important;
+  border: 2px solid rgba(222, 150, 28, 0.9);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.register button {
+  background-color: rgba(222, 150, 28, 0.9);
+  border: none;
+  color: #FFFFFF;
+  font-size: 120%;
+  font-weight: 400;
+  -webkit-transition: .7s all;
+  transition: .7s all;
+}
+
+.register button:hover {
+  background-color: #dd961c;
+}
+
+.register button:focus {
+  outline: none !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.register .form-control::-webkit-input-placeholder {
+  color: #bbb !important;
+}
+
+.register .form-control:-ms-input-placeholder {
+  color: #bbb !important;
+}
+
+.register .form-control::-ms-input-placeholder {
+  color: #bbb !important;
+}
+
+.register .form-control::placeholder {
+  color: #bbb !important;
+}
+
+.register .invalid-feedback {
+  text-align: left;
+  color: rgba(222, 150, 28, 0.9);
+}
+
+.register .is-invalid {
+  border: 2px solid #dd961c;
+  background: #FFFFFF;
+}
+
+.register .is-invalid:focus {
+  outline: none !important;
+  border: 2px solid rgba(222, 150, 28, 0.9);
+  -webkit-box-shadow: 0 0 10px orange;
+          box-shadow: 0 0 10px orange;
 }
 
 /* .landing {

@@ -22,7 +22,7 @@ module.exports = function validateSignupInput(data) {
   }
 
   if (Validator.isEmpty(data.email)) {
-    error.email = 'Email field is required';
+    errors.email = 'Email field is required';
   }
 
   if (!Validator.isLength(data.password, { min: 6, max: 30 }) || !Validator.isAlphanumeric(data.password)) {
