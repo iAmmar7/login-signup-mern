@@ -181,6 +181,67 @@ img {
           box-shadow: 0 0 10px orange;
 }
 
+.dashboard {
+  overflow: hidden;
+  text-align: left;
+  padding: 5% 10%;
+}
+
+.dashboard .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.dashboard .row .row-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.dashboard h1 {
+  color: #FFFFFF;
+}
+
+.dashboard p {
+  color: #999799;
+}
+
+.dashboard .logout {
+  padding: 1vw 5vw;
+  border-radius: 5%;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 2px;
+  -webkit-transition: 1s all;
+  transition: 1s all;
+  margin-right: 2vw;
+  border: none;
+  background-color: rgba(222, 150, 28, 0.9);
+  color: #000000;
+}
+
+.dashboard .logout:focus {
+  outline: 0;
+}
+
+.dashboard .logout:hover {
+  background-color: #FFFFFF;
+}
+
 /* .landing {
   position: relative;
   background: url('./img/action-adult-bike-417005.jpg') no-repeat;

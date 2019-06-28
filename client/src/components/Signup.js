@@ -14,6 +14,12 @@ class Signup extends Component {
     }
   }
 
+  componentDidMount() {
+    if (localStorage.getItem('jwtToken')) {
+      this.props.history.push('/dashboard');
+    }
+  }
+
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
