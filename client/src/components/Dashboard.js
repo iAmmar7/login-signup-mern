@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import setAuthToken from '../utils/setAuthToken';
 
 class Dashboard extends Component {
+  componentDidMount() {
+    if (!localStorage.jwtToken) {
+      this.props.history.push('/login')
+    }
+  }
 
   logoutUser = () => {
     localStorage.clear();

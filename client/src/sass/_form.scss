@@ -1,0 +1,63 @@
+.register {
+  height: 100%;
+
+  h1 {
+    color: $white;
+    font-weight: 400;
+  }
+
+  p {
+    color: $white;
+  }
+
+  input:focus {
+    outline: none !important;
+    border: 2px solid $bulb;
+    box-shadow: none;
+  }
+
+  button {
+    background-color: $bulb;
+    border: none;
+    color: $white;
+    font-size: 120%;
+    font-weight: 400;
+    transition: .7s all;
+
+    &:hover {
+      background-color: $bulb-hover;
+    }
+    &:focus {
+      outline: none !important;
+      box-shadow: none;
+    }
+  }
+
+  .form-control::placeholder {
+    color: #bbb !important;
+  }
+
+  .invalid-feedback {
+    text-align: left;
+    color: $bulb;
+  }
+  .is-invalid {
+    border: 2px solid $bulb-hover;
+    background: $white;
+
+    &:focus {
+      outline: none !important;
+      border: 2px solid $bulb;
+      box-shadow: 0 0 10px orange;
+    }
+  }
+
+  .icon {
+    margin-left: -13px;
+    margin-right: 8px;
+  }
+  .icon-hide {
+    display: none;
+  }
+  
+}

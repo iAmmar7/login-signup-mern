@@ -1,18 +1,3 @@
-body, html {
-  height: 100%;
-  margin: 0;
-}
-
-.App {
-  height: 100%;
-  text-align: center;
-  background-color: #241E20;
-}
-
-img {
-  width: 100%;
-}
-
 .landing {
   height: 100%;
   background-color: #241E20;
@@ -181,6 +166,15 @@ img {
           box-shadow: 0 0 10px orange;
 }
 
+.register .icon {
+  margin-left: -13px;
+  margin-right: 8px;
+}
+
+.register .icon-hide {
+  display: none;
+}
+
 .dashboard {
   overflow: hidden;
   text-align: left;
@@ -217,6 +211,7 @@ img {
 
 .dashboard p {
   color: #999799;
+  margin-left: 3px;
 }
 
 .dashboard .logout {
@@ -225,7 +220,7 @@ img {
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1.2px;
   -webkit-transition: 1s all;
   transition: 1s all;
   margin-right: 2vw;
@@ -242,39 +237,18 @@ img {
   background-color: #FFFFFF;
 }
 
-/* .landing {
-  position: relative;
-  background: url('./img/action-adult-bike-417005.jpg') no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 85.7vh;
-  margin-top: -24px;
-  margin-bottom: -50px;
-}
-
-.landing-inner {
-  padding-top: 80px;
-}
-
-.dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+body, html {
   height: 100%;
+  margin: 0;
 }
 
-.card-form {
-  opacity: 0.9;
+.App {
+  height: 100%;
+  text-align: center;
+  background-color: #241E20;
 }
 
-.latest-profiles-img {
-  width: 40px;
-  height: 40px;
+img {
+  width: 100%;
 }
-
-.form-control::placeholder {
-  color: #bbb !important;
-} */
 /*# sourceMappingURL=index.css.map */

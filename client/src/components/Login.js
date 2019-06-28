@@ -8,8 +8,8 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: '',
-      password: '',
+      email: 'ammar@gmail.com',
+      password: '123456',
       errors: {},
       loggedIn: false
     }
@@ -36,6 +36,8 @@ class Login extends Component {
   onSubmit = e => {
     e.preventDefault();
 
+    // this.setState({ loggedIn: true });
+
     const loginUser = {
       email: this.state.email,
       password: this.state.password,
@@ -49,19 +51,27 @@ class Login extends Component {
         const decoded = jwt_decode(token);
         localStorage.setItem('user', JSON.stringify(decoded));
         // this.props.history.push('/dashboard');
-        // this.forceUpdate();
-        this.setState({ loggedIn: true })
+        this.forceUpdate();
       })
-      .catch(err => this.setState({ errors: err.response.data }));
+      .catch(err => {
+        if (err.response.data === null) {
+          this.setState({ errors: err.response.data })
+        }
+      });
+
+    // if (localStorage.jwtToken) {
+    //   this.props.history.push('/dashboard');
+    // }
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors, loggedIn } = this.state;
 
     console.log("token", localStorage.getItem('jwtToken'));
-    // if (localStorage.getItem('jwtToken')) {
-    //   this.props.history.push('/dashboard');
-    // }
+    console.log(loggedIn);
+    if (localStorage.getItem('jwtToken')) {
+      this.props.history.push('/dashboard');
+    }
 
     return (
       <div className="register pt-5">
@@ -70,7 +80,7 @@ class Login extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Login</h1>
               <p className="lead text-center">Sign in to your account here!</p>
-              <form noValidate>
+              <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
                     type="email"
@@ -101,12 +111,11 @@ class Login extends Component {
                     <div className="invalid-feedback">{errors.password}</div>
                   )}
                 </div>
-                <button
-                  className="btn btn-info btn-block mt-4"
-                  data-style="zoom-in"
-                  onClick={this.onSubmit}
-                >
-                  {/* {loading && <i className="fa fa-refresh fa-spin"></i>} */}
+                <button className="btn btn-info btn-block mt-4">
+                  <i className={classnames("fa fa-spinner fa-spin icon", {
+                    'icon-hide': !loggedIn
+                  })}>
+                  </i>
                   Login
                 </button>
               </form>

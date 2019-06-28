@@ -1,0 +1,47 @@
+.dashboard {
+  overflow: hidden;
+  text-align: left;
+  padding: 5% 10%;
+
+  .row {
+    display: flex;
+    flex-direction: column;
+
+    .row-1 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+
+  h1 {
+    color: $white;
+  }
+
+  p {
+    color: $landing-para;
+    margin-left: 3px;
+  }
+
+  .logout {
+    padding: 1vw 5vw;
+    border-radius: 5%;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    transition: 1s all;
+    margin-right: 2vw;
+    border: none;
+    background-color: $bulb;
+    color: $black;
+
+    &:focus {
+    outline: 0;
+    }
+    &:hover {
+      background-color: $white;
+    }
+  }
+}
