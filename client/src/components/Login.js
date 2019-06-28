@@ -21,11 +21,11 @@ class Login extends Component {
     }
   }
 
-  componentDidUpdate() {
-    if (localStorage.getItem('jwtToken')) {
-      this.props.history.push('/dashboard');
-    }
-  }
+  // componentDidUpdate() {
+  //   if (localStorage.getItem('jwtToken')) {
+  //     this.props.history.push('/dashboard');
+  //   }
+  // }
 
   onChange = e => {
     this.setState({
@@ -51,7 +51,7 @@ class Login extends Component {
         const decoded = jwt_decode(token);
         localStorage.setItem('user', JSON.stringify(decoded));
         // this.props.history.push('/dashboard');
-        // this.forceUpdate();
+        this.forceUpdate();
       })
       .catch(err => {
         if (err.response !== null) {
@@ -69,9 +69,9 @@ class Login extends Component {
 
     console.log("token", localStorage.getItem('jwtToken'));
     console.log(loggedIn);
-    // if (localStorage.getItem('jwtToken')) {
-    //   this.props.history.push('/dashboard');
-    // }
+    if (localStorage.getItem('jwtToken')) {
+      this.props.history.push('/dashboard');
+    }
 
     return (
       <div className="register pt-5">
