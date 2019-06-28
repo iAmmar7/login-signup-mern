@@ -1,4 +1,5 @@
-module.exports = {
-  mongoURI: 'mongodb://Ammar:hello1@ds343127.mlab.com:43127/signup-login-mern',
-  secretKey: 'secter' // for jwt
-};
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./keys_prod');
+} else {
+  module.exports = require('./keys_dev');
+}

@@ -8,8 +8,8 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: 'ammar@gmail.com',
-      password: '123456',
+      email: '',
+      password: '',
       errors: {},
       loggedIn: false
     }
@@ -36,7 +36,7 @@ class Login extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    // this.setState({ loggedIn: true });
+    this.setState({ loggedIn: true });
 
     const loginUser = {
       email: this.state.email,
@@ -51,10 +51,10 @@ class Login extends Component {
         const decoded = jwt_decode(token);
         localStorage.setItem('user', JSON.stringify(decoded));
         // this.props.history.push('/dashboard');
-        this.forceUpdate();
+        // this.forceUpdate();
       })
       .catch(err => {
-        if (err.response.data === null) {
+        if (err.response !== null) {
           this.setState({ errors: err.response.data })
         }
       });
@@ -69,9 +69,9 @@ class Login extends Component {
 
     console.log("token", localStorage.getItem('jwtToken'));
     console.log(loggedIn);
-    if (localStorage.getItem('jwtToken')) {
-      this.props.history.push('/dashboard');
-    }
+    // if (localStorage.getItem('jwtToken')) {
+    //   this.props.history.push('/dashboard');
+    // }
 
     return (
       <div className="register pt-5">
