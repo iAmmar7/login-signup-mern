@@ -1,31 +1,27 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
 import classnames from 'classnames';
-import setAuthToken from '../utils/setAuthToken';
-import jwt_decode from 'jwt-decode';              // Define below
+
+import { login } from './authFunctions';
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: '',
-      password: '',
+      email: 'ammar@gmail.com',
+      password: '123456',
       errors: {},
-      loggedIn: false
+      loading: false
     }
+
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (localStorage.getItem('jwtToken')) {
       this.props.history.push('/dashboard');
     }
   }
-
-  // componentDidUpdate() {
-  //   if (localStorage.getItem('jwtToken')) {
-  //     this.props.history.push('/dashboard');
-  //   }
-  // }
 
   onChange = e => {
     this.setState({
@@ -33,44 +29,42 @@ class Login extends Component {
     })
   }
 
-  onSubmit = e => {
+  onSubmit(e) {
     e.preventDefault();
 
-    this.setState({ loggedIn: true });
+    this.setState({ loading: true })
 
     const loginUser = {
       email: this.state.email,
       password: this.state.password,
     }
 
-    axios.post('/api/users/login', loginUser)
-      .then(res => {
-        const { token } = res.data;
-        localStorage.setItem('jwtToken', token);
-        setAuthToken(token);
-        const decoded = jwt_decode(token);
-        localStorage.setItem('user', JSON.stringify(decoded));
-        // this.props.history.push('/dashboard');
-        this.forceUpdate();
-      })
-      .catch(err => {
-        if (err.response !== null) {
-          this.setState({ errors: err.response.data })
-        }
-      });
-
-    // if (localStorage.jwtToken) {
-    //   this.props.history.push('/dashboard');
-    // }
+    login(loginUser).then(res => {
+      if (res.success) {
+        this.props.history.push('/dashboard')
+      }
+      if (res.data) {
+        this.setState({ errors: res.data, loading: false });
+      }
+    })
   }
 
   render() {
-    const { errors, loggedIn } = this.state;
+    const { errors, loading } = this.state;
 
-    console.log("token", localStorage.getItem('jwtToken'));
-    console.log(loggedIn);
-    if (localStorage.getItem('jwtToken')) {
-      this.props.history.push('/dashboard');
+    let button;
+    if (loading) {
+      button = (
+        <button className="btn btn-block mt-4 disabled" data-style="zoom-in">
+          Loading...
+        </button>
+      )
+    } else {
+      button = (
+        <button className="btn btn-block mt-4" data-style="zoom-in">
+          Login
+        </button>
+      )
     }
 
     return (
@@ -82,6 +76,7 @@ class Login extends Component {
               <p className="lead text-center">Sign in to your account here!</p>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
+                  <label className="text-white">Email Address</label>
                   <input
                     type="email"
                     className={classnames("form-control form-control-lg", {
@@ -97,6 +92,7 @@ class Login extends Component {
                   )}
                 </div>
                 <div className="form-group">
+                  <label className="text-white">Password</label>
                   <input
                     type="password"
                     className={classnames("form-control form-control-lg", {
@@ -111,13 +107,7 @@ class Login extends Component {
                     <div className="invalid-feedback">{errors.password}</div>
                   )}
                 </div>
-                <button className="btn btn-info btn-block mt-4">
-                  <i className={classnames("fa fa-spinner fa-spin icon", {
-                    'icon-hide': !loggedIn
-                  })}>
-                  </i>
-                  Login
-                </button>
+                {button}
               </form>
             </div>
           </div>

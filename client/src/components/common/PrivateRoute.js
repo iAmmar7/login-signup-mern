@@ -1,16 +1,21 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const token = localStorage.getItem('jwtToken');
-
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      token ? (
+      localStorage.getItem('jwtToken') ? (
         <Component {...props} />
       ) : (
-          <Redirect to="/login" />
+          <Redirect to={
+            {
+              pathname: "/login",
+              state: {
+                from: props.location
+              }
+            }
+          } />
         )
     }
   />

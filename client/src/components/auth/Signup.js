@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import classnames from 'classnames';
+
+import { signup } from './authFunctions';
+
 
 class Signup extends Component {
   constructor() {
@@ -10,7 +12,8 @@ class Signup extends Component {
       email: '',
       password: '',
       password2: '',
-      errors: {}
+      errors: {},
+      loading: false
     }
   }
 
@@ -29,6 +32,8 @@ class Signup extends Component {
   onSubmit = e => {
     e.preventDefault();
 
+    this.setState({ loading: true })
+
     const newUser = {
       name: this.state.name,
       email: this.state.email,
@@ -36,13 +41,32 @@ class Signup extends Component {
       password2: this.state.password2,
     }
 
-    axios.post('/api/users/signup', newUser)
-      .then(res => this.props.history.push('./login'))
-      .catch(err => this.setState({ errors: err.response.data }))
+    signup(newUser).then(res => {
+      if (res) {
+        this.setState({ errors: res.data, loading: false })
+      } else {
+        this.props.history.push("/login")
+      }
+    })
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors, loading } = this.state;
+
+    let button;
+    if (loading) {
+      button = (
+        <button className="btn btn-block mt-4 disabled" data-style="zoom-in">
+          Loading...
+        </button>
+      )
+    } else {
+      button = (
+        <button className="btn btn-block mt-4" data-style="zoom-in">
+          Login
+        </button>
+      )
+    }
 
     return (
       <div className="register pt-5">
@@ -53,6 +77,7 @@ class Signup extends Component {
               <p className="lead text-center">Create your account here!</p>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
+                  <label className="text-white">Name</label>
                   <input
                     type="text"
                     className={classnames("form-control form-control-lg", {
@@ -68,6 +93,7 @@ class Signup extends Component {
                   )}
                 </div>
                 <div className="form-group">
+                  <label className="text-white">Email Address</label>
                   <input
                     type="email"
                     className={classnames("form-control form-control-lg", {
@@ -83,6 +109,7 @@ class Signup extends Component {
                   )}
                 </div>
                 <div className="form-group">
+                  <label className="text-white">Password</label>
                   <input
                     type="password"
                     className={classnames("form-control form-control-lg", {
@@ -98,6 +125,7 @@ class Signup extends Component {
                   )}
                 </div>
                 <div className="form-group">
+                  <label className="text-white">Password Confirmation</label>
                   <input
                     type="password"
                     className={classnames("form-control form-control-lg", {
@@ -112,10 +140,7 @@ class Signup extends Component {
                     <div className="invalid-feedback">{errors.password2}</div>
                   )}
                 </div>
-                <button className="btn btn-info btn-block mt-4" data-style="zoom-in">
-                  {/* {loading && <i className="fa fa-refresh fa-spin"></i>} */}
-                  Signup
-                </button>
+                {button}
               </form>
             </div>
           </div>
